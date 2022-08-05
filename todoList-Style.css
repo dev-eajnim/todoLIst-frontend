@@ -1,0 +1,52 @@
+header{
+    text-align: center;
+}
+.todoList-checkbox {
+    width: 20px;
+    height: 20px;
+    vertical-align: -4px;
+}
+
+
+.myListDiv{
+    text-align: left;
+    width: 500px;
+    font-size: 20px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f5d682;
+}
+
+.todoList {
+    list-style: none;
+}
+
+.oneListStyle{
+    padding: 5px;
+}
+
+.oneListStyle span {
+    display: inline-block;
+    width: 300px;
+}
+.oneListButton{
+    width: 60px;
+    font-size: 18px;
+}
+
+#addListDiv{
+    margin: 30px auto;
+    padding: 10px 0px 40px;
+    width: 300px;
+    border: 5px solid ;
+    text-align: center;
+}
+
+.addListTodo{
+    margin: 15px;
+}
+
+.btnSaveTodo{
+    /* width: 60px; */
+    padding: 1px 20px;
+}

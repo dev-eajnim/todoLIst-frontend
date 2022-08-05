@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To do List</title>
+    <!-- 폰트 변경 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Song+Myung&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Song Myung', serif;
+        }
+        
+    </style>
+    <link rel="stylesheet" type="text/css" href="todoList-Style.css">
+
+    <script>
+        function getShow() {
+            addListDiv.style = "";
+        }
+        function getHide() {
+            addListDiv.style = "display:none";
+        }
+        function saveMessage() {
+            alert("할일이 저장되었습니다");
+        }
+        function deleteTodo() {
+            alert("할일이 삭제되었습니다")
+        }
+    </script>
+</head>
+
+<body>
+    <header>
+        <h2> My To do List~ </h2>
+    </header>
+
+    <section class="myListDiv">
+        <ul class="todoList">
+            <li class="oneListStyle">
+                <span><input class="todoList-checkbox" type="checkbox"> 할일1</span>
+                <button class="oneListButton" onclick="getShow()">수정</button>
+                <button class="oneListButton" onclick="deleteTodo()">삭제</button>
+            </li>
+            
+
+            <li class="oneListStyle">
+                <span><input class="todoList-checkbox" type="checkbox"> 할일2</span>
+                <button class="oneListButton" onclick="getShow()">수정</button>
+                <button class="oneListButton" onclick="deleteTodo()">삭제</button>
+            </li>
+
+            <li class="oneListStyle">
+                <span><input class="todoList-checkbox" type="checkbox"> 할일3</span>
+                <button class="oneListButton" onclick="getShow()">수정</button>
+                <button class="oneListButton" onclick="deleteTodo()">삭제</button>
+            </li>
+        </ul>
+
+    </section>
+
+    <div id="addListDiv" style="display:none">
+        <!-- visiblity:hidden -->
+        <h2>할일 추가</h2>
+        <label class="addListTodo">할일</label>
+        <input>
+        <button class="btnSaveTodo" onclick="getHide(), saveMessage()">저장</button>
+    </div>
+
+</body>
+
+</html>

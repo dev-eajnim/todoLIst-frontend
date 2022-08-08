@@ -13,7 +13,7 @@ header{
     width: 500px;
     font-size: 20px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 40px;
     background-color: #f5d682;
 }
 
@@ -29,6 +29,7 @@ header{
     display: inline-block;
     width: 300px;
 }
+
 .oneListButton{
     width: 60px;
     font-size: 18px;
@@ -49,4 +50,9 @@ header{
 .btnSaveTodo{
     /* width: 60px; */
     padding: 1px 20px;
+}
+
+.btnCloseTodo{
+    margin-top: 20px;
+    width: 60px;
 }

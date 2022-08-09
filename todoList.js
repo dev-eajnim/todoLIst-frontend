@@ -1,11 +1,13 @@
 let selectedId = null;
 
+// 할일 추가 버튼 
 function getShow(id) {
 
+    // id가 있는 경우 - 수정
     if(id){
         const li = document.querySelector(`.todoList li[data-id="${id}"]>span`);
         document.querySelector('#todoName').value = li.innerText;
-    }
+    }//id가 없는 경우 - 신규 추가
     else{
         document.querySelector('#todoName').value = '';
     }
@@ -35,7 +37,7 @@ async function create() {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json;charset=utf-8'
-            // 'Content-Type': 'application/x-www-form-urlencoded',
+            // 'Content-Type': 'application/x-www-form-urlencoded', 여러 파일 형식 넣는 거 가능
         },
         body: JSON.stringify({
             "name": todoName,
@@ -101,7 +103,7 @@ async function getList() {
         li.setAttribute('data-id', l.id)
         li.className = 'oneListStyle';
         li.innerHTML = `
-            <span><input class="todoList-checkbox" type="checkbox" ${checked} onChange="toggle(this)"> ${l.name}</span>
+            <span><input class="todoList-checkbox" type="checkbox" ${checked} onChange="toggle(this,${l.id})"> ${l.name}</span>
             <button class="oneListButton" onclick="getShow(${l.id})">수정</button>
             <button class="oneListButton" onclick="deleteTodo(${l.id})">삭제</button>
         `;
@@ -109,7 +111,20 @@ async function getList() {
     }
 } 
 
-async function toggle(obj) {
+// 체크박스 클릭하면 실행됨
+async function toggle(obj, id) {
+    // 현재 선택 유무 상태
     const checked = obj.checked
-    console.log(checked)
+ 
+    await fetch(`http://localhost:3000/cats/${id}/toggle`,{
+        method: 'PATCH'
+    }).then((response)=>{
+        
+        console.log(response.json())
+
+    }).catch(()=>{
+        alert("Error");
+    })
 }
+
+//list[id].done =  checked; //checked - boolean

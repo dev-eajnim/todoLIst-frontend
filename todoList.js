@@ -98,9 +98,15 @@ async function getList() {
 
     ul.innerHTML = '' //비웠다가 다시 붙이기 append
     for (let l of list) {
-        const li = document.createElement('li');
-        const checked = ''
-        li.setAttribute('data-id', l.id)
+        const li = document.createElement('li'); //createElement : 요소만들기
+        let checked = '';
+        //var : 유연한 변수 선언, 그러나 어디서 사용되었는지 파악하기 어렵고 값이 바뀔 우려가 있다
+        //let : 재선언은 안되지만, 재할당은 가능
+        //const : 변수 재선언, 재할당이 되지 않음
+        if(l.done){
+            checked = 'checked';
+        }
+        li.setAttribute('data-id', l.id) //요소에 값 할당
         li.className = 'oneListStyle';
         li.innerHTML = `
             <span><input class="todoList-checkbox" type="checkbox" ${checked} onChange="toggle(this,${l.id})"> ${l.name}</span>
@@ -114,17 +120,13 @@ async function getList() {
 // 체크박스 클릭하면 실행됨
 async function toggle(obj, id) {
     // 현재 선택 유무 상태
-    const checked = obj.checked
+    const check = obj.checked
  
-    await fetch(`http://localhost:3000/cats/${id}/toggle`,{
+    const response = await fetch(`http://localhost:3000/cats/${id}/toggle`,{
         method: 'PATCH'
-    }).then((response)=>{
-        
-        console.log(response.json())
-
+    }).then((response)=>{          
+        return response.json();
     }).catch(()=>{
         alert("Error");
     })
 }
-
-//list[id].done =  checked; //checked - boolean
